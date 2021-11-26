@@ -1,0 +1,76 @@
+
+    
+<div class="grid">
+   
+    
+    <div class="filter">
+        <div class="col-12 md:col-6 lg:col-3">
+            <h6>RANGE</h6>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+            <div style="padding: 6px;">{{rangeValues[0] + ' - ' + rangeValues[1]}}</div>
+        </div>
+    </div>
+    
+    <div class="filter">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="filter-header">PRODUCT TYPE</div>
+            <div class="col-12 md:col-6 lg:col-3"  >
+                 <p-checkbox name="groupname" value="Diamond Rings" id="mycheck1"  [(ngModel)]="selectedValues" (onChange)="onCheckboxChange($event)" ></p-checkbox>
+                     <span class="filter-text">Diamond Rings</span>  
+            <!--  <input type="checkbox" value="Diamond Rings" id="mycheck1" [(ngModel)]="selectedValues" (change)="onCheckboxChange($event)">Diamond Rings-->
+            
+        </div>
+            <div class="col-12 md:col-6 lg:col-3">
+               <p-checkbox name="groupname" value="Gold Rings" [(ngModel)]="selectedValues" (onChange)="onCheckboxChange($event)" ></p-checkbox>
+             <span class="filter-text">Gold Rings</span>
+               <!--  <input type="checkbox" value="Gold Rings" id="mycheck1" [(ngModel)]="selectedValues" (change)="onCheckboxChange($event)">Gold Rings-->
+            </div>
+        </div>
+    </div>
+
+    <div class="filter">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="filter-header">GOLD PURITY</div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="14k" [(ngModel)]="enterName" (onChange)="onCheckboxChange($event)"></p-checkbox>
+                <span class="filter-text">14 kt</span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="18k" [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)"></p-checkbox>
+                <span class="filter-text">18 kt</span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="24k" [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)"></p-checkbox>
+                <span class="filter-text">24 kt</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="filter-header">METAL COLOR</div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="val6" [(ngModel)]="selectedValues"></p-checkbox>
+                <span class="filter-text">Yellow</span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="val7" [(ngModel)]="selectedValues"></p-checkbox>
+                <span class="filter-text">White</span>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <p-checkbox name="groupname" value="val8" [(ngModel)]="selectedValues"></p-checkbox>
+                <span class="filter-text">Rose</span>
+            </div>
+        </div>
+    </div>
+
+ <!--   <div *ngIf="selectedValues.length > 0||selectedPurities.length>0">
+        <div  *ngFor="let item of products">
+            <app-filter-item [filteredList]="item"></app-filter-item>
+        </div>  
+    
+</div>-->
+
+
