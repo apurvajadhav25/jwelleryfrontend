@@ -2,7 +2,7 @@
 <div class="container">
       <div class="col">
         <div class="card mb-4 shadow-sm">
-           <img class="bd-placeholder-img card-img-top p-2" width="100%" alt="fy" [src]="productItem.imageUrl" [routerLink]="['/product',productItem.id]" style="cursor: pointer;" /> 
+           <img class="bd-placeholder-img card-img-top p-2" width="100%" alt="fy" [src]="productItem.imagePath" [routerLink]="['/product',productItem.id]" style="cursor: pointer;" /> 
         <div class="card-body">
           <p class="card-text1">{{ productItem.name }} </p>
           <p class="card-text">
@@ -15,12 +15,7 @@
        </div>
 </div>
         
-      <!-- <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-primary product-btn" (click)="addtocart(productItem)" style="float: right;">Add to
-            Cart</button>    
- </div>
-      </div> -->
+
         
 
    

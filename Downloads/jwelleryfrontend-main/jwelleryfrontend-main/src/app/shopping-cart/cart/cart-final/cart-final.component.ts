@@ -11,10 +11,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class CartFinalComponent implements OnInit {
 
   products : any = [];
-  cartItems: any = [
-    //{ id: 1, productId: 1, productName: 'Testv1', qty: 4, price: 100},
-   // { id: 2, productId: 2,  productName: 'Test 2', qty: 3, price: 200},
-   ];
+  cartItems: any = [];
   cartTotal = 0
   discountTotal=0
   grandTotal !: any;
@@ -22,62 +19,26 @@ export class CartFinalComponent implements OnInit {
               private sharedService: SharedService) { }
 
   ngOnInit(): void {
-  //   this.msg.getMsg().subscribe((product:any )  => {
-  //     console.log(product)
-  //   //this.loadCartItems();
-  //  this.addProductToCart(product)
-  // })
-
+ 
   this.sharedService.getProducts()
     .subscribe(res=>{
       this.cartItems = res;
-      //this.grandTotal = this.sharedService.getTotalPrice();
-      this.cartTotal = 0
- this.cartItems.forEach((item: {  qty: number;price: number; }) => {
-   this.cartTotal +=  (item.qty * item.price)
- })
+      })
 
- this.cartItems.forEach((item: {  discount: number; }) => {
-   console.log(item.discount)
-  this.discountTotal += item.discount
-})
-    })
- 
-  }
+    this.cartTotal = 0
+    this.cartItems.forEach((item: {  qty: number;price: number; }) => {
+    this.cartTotal +=  (item.qty * item.price)
+   })
 
-  // addProductToCart(product: Product){
-  
-  //   let productExists = false
-   
-  //   for (let i in this.cartItems) {
-  //     if (this.cartItems[i].productId === product.id) {
-  //       this.cartItems[i].qty++
-  //       productExists = true
-  //       break;
-  //     }
-  //   }
-   
-  //   if (!productExists) {
-  //     this.cartItems.push(
-  //       {
-  //     productId: product.id,
-  //       productName: product.name,
-  //       qty: 1,
-  //       price: product.price
-  //     }
-  //     )
-  //   }
-    
-   
-  //   this.cartTotal = 0
-  //   this.cartItems.forEach((item: { qty: number; price: number; }) => {
-  //     this.cartTotal += (item.qty * item.price)
-  //   })
-  //  }
+    this.cartItems.forEach((item: {  discount: number; }) => {
+    this.discountTotal += item.discount
+  })
+}
 
   removeItem(item: any){
      this.sharedService.removeCartItem(item);
   }
+  
   emptycart(){
      this.sharedService.removeAllCart();
   }

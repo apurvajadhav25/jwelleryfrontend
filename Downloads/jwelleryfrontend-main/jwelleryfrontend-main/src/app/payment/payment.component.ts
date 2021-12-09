@@ -18,9 +18,7 @@ export class PaymentComponent implements OnInit {
   }
   
   pay(){
-    this.productService.payment(this.customerId,this.transactionAmount,this.orderId).subscribe(()=>{
-
-    })
+  
    
   }
 }

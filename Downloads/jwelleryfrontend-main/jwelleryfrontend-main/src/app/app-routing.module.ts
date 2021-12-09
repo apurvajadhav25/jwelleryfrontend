@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
-import { GalleriaComponent } from './galleria/galleria.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path:'login', component: LoginComponent },
   { path:'register', component: RegisterComponent },
   { path:'list', component: ProductListComponent },
-  { path:'gallery', component: GalleriaComponent },
   { path:'payment', component: PaymentComponent },
   { path:'upload', component: ImageUploadComponent },
   { path:'contact', component: ContactUsComponent },
@@ -37,4 +35,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

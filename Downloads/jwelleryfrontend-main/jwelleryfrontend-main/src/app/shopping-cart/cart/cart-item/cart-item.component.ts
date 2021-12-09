@@ -8,7 +8,8 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() cartItem: any
+  @Input() 
+  cartItem: any
   
   constructor(private sharedService: SharedService) { }
 

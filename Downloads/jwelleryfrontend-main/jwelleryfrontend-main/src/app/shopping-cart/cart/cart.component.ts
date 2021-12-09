@@ -14,56 +14,8 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class CartComponent implements OnInit {
 
- /* cartItems : CartItem[] = [
-   //{ id: 1, productId: 1, productName: 'Testv1', qty: 4, price: 100},
-  // { id: 2, productId: 2,  productName: 'Test 2', qty: 3, price: 200},
-  ];
-cartTotal = 0
- 
-  constructor(private msg: MessengerService,
-              private cartService: CartService
-              ) { }
-  
-   ngOnInit() {
-     this.handleSubscription();
-     this.loadCartItems();
-     
-  }
-
-  handleSubscription(){
-    this.msg.getMsg().subscribe((product:any )  => {
-    //  console.log(product)
-    this.loadCartItems();
- 
-  })
-    
-  }
-  loadCartItems(){
-    this.cartService.getCartItems().subscribe((items: CartItem[])=>
-    {
-      this.cartItems = items;
-      this.calcCartTotal();
-    })
-
-  }
- 
-
-
-calcCartTotal(){
-  this.cartTotal = 0
-  this.cartItems.forEach(item  => {
-  this.cartTotal += (item.qty * item.price)
-
-})
-
-
-}*/
-
-cartItems: any = [
-  //{ id: 1, productId: 1, productName: 'Testv1', qty: 4, price: 100},
- // { id: 2, productId: 2,  productName: 'Test 2', qty: 3, price: 200},
- ];
-cartTotal = 0
+ cartItems: any = [];
+ cartTotal = 0
 
  constructor(private msg: MessengerService,
              private http: HttpClient,
@@ -71,22 +23,13 @@ cartTotal = 0
              private sharedService: SharedService) { }
  
   ngOnInit() {
-    
-//    this.msg.getMsg().subscribe((product:any )  => {
-//      console.log(product)
-//    //this.loadCartItems();
-//   this.addProductToCart(product)
-//  })
-
-this.sharedService.getProducts()
-    .subscribe(res=>{
+    this.sharedService.getProducts().subscribe(res=>{
       this.cartItems = res;
-      //this.grandTotal = this.sharedService.getTotalPrice();
-      this.cartTotal = 0
- this.cartItems.forEach((item: {  qty: number;price: number; }) => {
-   this.cartTotal +=  (item.qty * item.price)
+     this.cartTotal = 0
+     this.cartItems.forEach((item: {  qty: number;price: number; }) => {
+     this.cartTotal +=  (item.qty * item.price)
  })
-    })
+})
 
  
  }
@@ -120,12 +63,7 @@ addProductToCart(product: Product){
  })
 }
 
-pay(){
-  this.http.get('http://localhost:8080/get')
- // this.productService.payment1().subscribe(()=>{
 
-  //})
-}
 }
 
 

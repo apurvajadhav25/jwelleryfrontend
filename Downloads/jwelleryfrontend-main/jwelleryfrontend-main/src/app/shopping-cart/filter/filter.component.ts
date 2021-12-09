@@ -51,10 +51,7 @@ export class FilterComponent implements OnInit {
       this.rangeValues[0]=this.slider1[0].minValue
       this.rangeValues[1]=this.slider1[0].maxValue
     })
-
-   
-    
-   }
+  }
 
   onCheckboxChange(e: any){
     
@@ -72,19 +69,8 @@ export class FilterComponent implements OnInit {
     this.msg.sendMsgEvent(this.filter1,this.filter2,this.price);
     this.filter1=''
     this.filter2=''
-    
+    }
   }
- 
-   /* if(this.selectedValues.length>1){
-      let name=this.selectedValues[0]+','+this.selectedValues[1];
-      console.log(name)
-      this.productService.getProducts(name,'').subscribe(()=>{
-
-      })
-    }*/
-
-  }
- 
 }
 
 

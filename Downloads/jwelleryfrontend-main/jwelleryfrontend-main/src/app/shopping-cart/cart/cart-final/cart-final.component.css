@@ -22,23 +22,6 @@
     padding-bottom: 10px;
 }
 
-/* .pmts-wrap {
-    padding: 10px;
-    display: table;
-    width: 100%;
-}
-
-
-
-pmts-box {
-    border-top: 1px solid rgba(0,0,0,.12);
-    box-shadow: none;
-    position: static;
-    margin: 40px -15px 0 -20px;
-    width: calc(100% + 40px);
-    display: table;
-}*/
-
 .pmts-wrap .pmts-btn {
      float: right; 
      display: table-cell; 

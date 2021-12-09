@@ -13,10 +13,9 @@ import { SharedService } from '../services/shared.service';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent implements OnInit {
-  name:string="apurva"
   sub:any;
   id:any;
-  productItem1: Product[]=[]
+ // productItem1: Product[]=[]
   products:any
   images2: any
   value: string='Add to cart'
@@ -42,45 +41,35 @@ export class ProductViewComponent implements OnInit {
               private sharedService: SharedService ) { }
 
   ngOnInit(): void {
-   // this.productService.getImages().then(images => this.images = images);
-   
-   
+
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
-     
-       this.id = params.get('id'); 
-       this.view();
-     //  let products=this._productService.getProducts();
-     
+    this.id = params.get('id'); 
+    this.view();
    });
 
-   this.productService.getImages(this.id).subscribe((images1)=>{
+    this.productService.getImages(this.id).subscribe((images1)=>{
     this.images2=images1
-    console.log(this.images2)
   })
   }
  
   view(){
-     
     this.productService.getById(this.id).subscribe((products)=>{
       this.products=products
-     
     })
-
   }
+
   addtocart(item: any){
   
     if (this.value=="Add to cart"){
       this.value = "Go to Cart";
    }
-    else  {
+    else{
      this.value = "Add to cart";
      this._router.navigateByUrl("\cart")
     }
-    
-   
-      this.msg.sendMsg(this.products)
-    this.sharedService.addtoCart(item);
 
+    this.msg.sendMsg(this.products)
+    this.sharedService.addtoCart(item);
   }
  
   

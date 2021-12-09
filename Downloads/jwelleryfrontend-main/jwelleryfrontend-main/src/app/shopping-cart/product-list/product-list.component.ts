@@ -21,27 +21,15 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService,
               private msg: MessengerService) {
                 this.clickEventSubscription= this.msg.getMsgEvent().subscribe((s)=>{
-                  this.sort=s
-                  console.log(this.sort)
+                this.sort=s
                 })
 
                 this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
                   this.getProducts(filter1,filter2,price,this.sort);
                 })
-
-                
-                
                }
  
   ngOnInit(): void {
-   
-   
-   
-   // this.productService.getImages().then(images => this.images = images);
-   //this.productService.getImages()
-   //this.productList = this.productService.getProducts()
-   
-    
     this.getProducts('','','','');
 
   }
@@ -50,7 +38,6 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts(filter1,filter2,price,sort).subscribe((products)=>{
       this.productList = products;
     }
- 
     )
   }
 
@@ -60,8 +47,7 @@ export class ProductListComponent implements OnInit {
     if(this.sortedValues.length>0){
     this.productService.getSortedProducts().subscribe((products)=>{
       this.productList=products
-      
-    })
+       })
   }else{
     this.getProducts('','','','')
   } 

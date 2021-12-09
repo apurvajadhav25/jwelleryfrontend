@@ -34,7 +34,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {GalleriaModule} from 'primeng/galleria';
-import { GalleriaComponent } from './galleria/galleria.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { PaymentComponent } from './payment/payment.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
@@ -65,7 +64,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CartItemComponent,
     LoginComponent,
     RegisterComponent,
-    GalleriaComponent,
     PaymentComponent,
     ImageUploadComponent,
     ContactUsComponent,

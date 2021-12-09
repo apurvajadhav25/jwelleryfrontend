@@ -1,7 +1,4 @@
-<!-- 
- <strong>Name:{{ products.name }}</strong><br>
-<strong>Description:{{ products.description }}</strong><br>
-<strong>Price: {{ products.price | currency:'INR' }}</strong><br>  -->
+
 <div class="row">
     <div class="col">
         <div class="card mb-4 shadow-sm">
@@ -18,18 +15,18 @@
         </div>
     </ng-template>
 </p-galleria>
-
-            
         </div>
-    </div>   
+    </div>  
+
     <div class="col-md-7">
          {{products.name}}<br><br>
-<strong>  {{ products.price | currency:'INR' }}</strong><br><br>
- {{ products.description }}<br><br><br>
+        <strong>  {{ products.price | currency:'INR' }}</strong><br><br>
+        {{ products.description }}<br><br><br>
 
-<button type="button" class="btn btn-sm btn-primary product-btn " (click)="addtocart(products)">{{value}}</button>
-<br> <br> 
-Delivery Details   <br><br>
-<input type=text placeholder="Pin Code"> 
-</div>
+        <button type="button" class="btn btn-sm btn-primary product-btn " (click)="addtocart(products)">{{value}}</button>
+        <br> <br> 
+        Delivery Details 
+        <br><br>
+         <input type=text placeholder="Pin Code"> 
     </div>
+</div>

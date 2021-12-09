@@ -8,7 +8,6 @@ export class SharedService {
 
   public cartItemList : any =[]
   public productList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>("");
 
   constructor() { }
 
@@ -33,13 +32,11 @@ export class SharedService {
       price: product.price,
       name: product.name,
       description: product.description,
-      imageUrl:  product.imageUrl,
+      imageUrl:  product.imagepath,
       discount: product.discount,
       id: product.id
     });
     this.productList.next(this.cartItemList);
-//this.getTotalPrice();
-    console.log(this.cartItemList)
   }
   }
 
@@ -57,11 +54,4 @@ export class SharedService {
     this.productList.next(this.cartItemList);
   }
 
-  getTotalPrice() : number{
-    let grandTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal += a.total;
-    })
-    return grandTotal;
-  }
 }
