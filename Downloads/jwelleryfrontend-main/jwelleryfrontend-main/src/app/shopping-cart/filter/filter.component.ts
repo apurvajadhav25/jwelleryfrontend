@@ -1,7 +1,12 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
+import { ProductListComponent } from '../product-list/product-list.component';
+import {AccordionModule} from 'primeng/accordion';
+import { FilterService } from 'src/app/services/filter.service';
 
 
 @Component({
@@ -12,47 +17,71 @@ import { ProductService } from 'src/app/services/product.service';
 export class FilterComponent implements OnInit {
 
   rangeValues: number[] = [];
- 
   selectedValues: string[]=[];
-
   selectedPurities: string[]=[];
+  filter1: string=''
+  filter2: string='' 
+  price: string=''
+  f1: any[]=[]
+  f2: any[]=[]
+  f3: any[]=[]
+  slider1: any[]=[]
+  minValue!: any
+  maxValue!: any
 
-  parentProperty = "I come from parent"
-  
-  products:Product[]=[];
-  enterName="";
-  parentData=''
- 
-  constructor(private productService: ProductService,
-    private route:ActivatedRoute) { }
+  constructor(private filterService: FilterService,
+              private route: ActivatedRoute,
+              private msg: MessengerService) { }
 
   ngOnInit(): void {
-    this.rangeValues[0]=20;
-    this.rangeValues[1]=80;
+    this.filterService.getFilter1().subscribe((filter)=>{
+      this.f1=filter;
+    })
+
+    this.filterService.getFilter2().subscribe((filter)=>{
+      this.f2=filter;
+    })
+
+    this.filterService.getFilter3().subscribe((filter)=>{
+      this.f3=filter;
+    })
+
+    this.filterService.getSlider1().subscribe((filter)=>{
+      this.slider1=filter
+      this.rangeValues[0]=this.slider1[0].minValue
+      this.rangeValues[1]=this.slider1[0].maxValue
+    })
+
+   
     
    }
 
   onCheckboxChange(e: any){
- 
-   
- 
-    if(this.selectedValues || this.selectedPurities){
-      for (let i = 0; i < 3; i++){
-        if((this.selectedValues[i]=='Diamond Rings'||this.selectedValues[i]=='Gold Rings')
-        ||(this.selectedPurities[i]=='18k'||this.selectedPurities[i]=='24k'||this.selectedPurities[i]=='14k')){
-          
-          let type=this.selectedValues[i]
-          let purity=this.selectedPurities[i]
-          this.productService.getProductsAccType(type,purity).subscribe((products)=>{
-            this.products = products;
-            console.log(products)
-          }
-       
-          )
-
-        }
-      }
+    
+    if(this.selectedValues||this.selectedPurities||this.rangeValues){
+    
+    for(let i=0;i<this.selectedValues.length;i++){
+       this.filter1=this.filter1+this.selectedValues[i]+','
     }
+    for(let i=0;i<this.selectedPurities.length;i++){
+      this.filter2=this.filter2+this.selectedPurities[i]+','
+   }
+  
+   
+    this.price=this.rangeValues[0]+'-'+this.rangeValues[1]
+    this.msg.sendMsgEvent(this.filter1,this.filter2,this.price);
+    this.filter1=''
+    this.filter2=''
+    
+  }
+ 
+   /* if(this.selectedValues.length>1){
+      let name=this.selectedValues[0]+','+this.selectedValues[1];
+      console.log(name)
+      this.productService.getProducts(name,'').subscribe(()=>{
+
+      })
+    }*/
 
   }
  

@@ -7,12 +7,14 @@ export class CartItem {
     productName: string;
     qty: number;
     price: number;
+    discount: number;
    
-    constructor(id: number, product: Product, qty = 1) {
+    constructor(id: number, product: Product, qty = 1, discount: number) {
       this.id = id;
       this.productId = product.id;
       this.productName = product.name;
       this.price = product.price;
       this.qty = qty;
+      this.discount= discount;
     }
   }

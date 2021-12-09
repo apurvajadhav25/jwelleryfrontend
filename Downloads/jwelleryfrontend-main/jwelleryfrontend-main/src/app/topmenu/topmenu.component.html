@@ -218,13 +218,13 @@
         </div>
         
       </li>
-      <a class="nav-link" routerLink="upload" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <!-- <a class="nav-link" routerLink="upload" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         UPLOAD IMAGE
-         </a>
-      
+         </a> -->
+
       <a class="nav-link" routerLink="contact" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        CONTACT US
-        </a>
+      </a>
     </ul>
     
     <form class="form-inline my-2 my-lg-0">
@@ -239,6 +239,14 @@
     <a class="nav-link" routerLink="register" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       NEW USER
     </a>
+
+    <button routerLink="cart" class="btn btn-primary">
+      <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+      <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div> 
+     </button> 
+  
+
+    
   </div>
 
 

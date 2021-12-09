@@ -157,6 +157,25 @@
       </div>
   </ng-template>
 </p-galleria>-->
+<br>
+<p-dropdown optionsValue="cities" [(ngModel)]="sortedValues" optionLabel="name" optionValue="code"></p-dropdown>
+<p-accordion >
+  <div class="filter" >
+    
+     <p-accordionTab header="Sort By"  >
+    
+      <div >
+        <p-radioButton name="groupname" value="Price[low-high]" (onClick)="getSortedProductsAsc($event)" [(ngModel)]="sortedValues"></p-radioButton>
+       <span class="filter-text">Price[low-high]</span>
+     </div>
+
+     <div>
+      <p-radioButton name="groupname" value="Price[high-low]" (onClick)="getSortedProductsDesc($event)" [(ngModel)]="sortedValues"></p-radioButton>
+       <span class="filter-text">Price[high-low]</span>
+   </div>
+
+      </p-accordionTab>
+  </div>
  <div class ="row">
     <div class="col-md-4" *ngFor="let product of productList">
       <app-product-item [productItem]="product" ></app-product-item>

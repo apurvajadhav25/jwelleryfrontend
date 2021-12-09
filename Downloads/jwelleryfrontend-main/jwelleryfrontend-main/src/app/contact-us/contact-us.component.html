@@ -26,16 +26,16 @@
           
             <div style="margin: 15px 1px;">
                 <div class="text-row" style="display: inline; float: left;">
-                    <input type="text" pInputText placeholder="Name">
+                    <input type="text" pInputText placeholder="Name" [(ngModel)] = "name">
                 </div>
                 <div class="text-row" style="display: inline; float: left; margin-left: 28px;">
-                    <input type="text" pInputText placeholder="Email" name="toEmail" [(ngModel)] = "body">
+                    <input type="text" pInputText placeholder="Email" name="toEmail" [(ngModel)] = "email">
                 </div>
                 <div class="text-row">
-                    <textarea pInputTextarea placeholder="Comment" cols="53"></textarea>
+                    <textarea pInputTextarea placeholder="MESSAGE" cols="53" [(ngModel)] = "message" ></textarea>
                 </div>
                 <div class="text-row" >
-                    <button pButton type="button" (click)="onClick()"label="Primary" class="p-button-outlined" style="border: 2px solid black;color: black;"></button>
+                    <button pButton type="button" (click)="onClick()"label="Send" class="p-button-outlined" style="border: 2px solid black;color: black;"></button>
                 </div>
             </div>
       

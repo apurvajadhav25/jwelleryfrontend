@@ -1,8 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { Product } from 'src/app/models/product';
 
 import { MessengerService } from 'src/app/services/messenger.service';
+import { ProductService } from 'src/app/services/product.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-cart',
@@ -62,16 +65,28 @@ cartItems: any = [
  ];
 cartTotal = 0
 
- constructor(private msg: MessengerService
-             ) { }
+ constructor(private msg: MessengerService,
+             private http: HttpClient,
+             private productService: ProductService,
+             private sharedService: SharedService) { }
  
   ngOnInit() {
     
-   this.msg.getMsg().subscribe((product:any )  => {
-     console.log(product)
-   //this.loadCartItems();
-  this.addProductToCart(product)
+//    this.msg.getMsg().subscribe((product:any )  => {
+//      console.log(product)
+//    //this.loadCartItems();
+//   this.addProductToCart(product)
+//  })
+
+this.sharedService.getProducts()
+    .subscribe(res=>{
+      this.cartItems = res;
+      //this.grandTotal = this.sharedService.getTotalPrice();
+      this.cartTotal = 0
+ this.cartItems.forEach((item: {  qty: number;price: number; }) => {
+   this.cartTotal +=  (item.qty * item.price)
  })
+    })
 
  
  }
@@ -103,6 +118,13 @@ addProductToCart(product: Product){
  this.cartItems.forEach((item: { qty: number; price: number; }) => {
    this.cartTotal += (item.qty * item.price)
  })
+}
+
+pay(){
+  this.http.get('http://localhost:8080/get')
+ // this.productService.payment1().subscribe(()=>{
+
+  //})
 }
 }
 

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 
@@ -8,19 +9,21 @@ import { ProductService } from '../services/product.service';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private productService : ProductService) { }
-
+  constructor(private productService : ProductService,
+              private http: HttpClient) { }
+  orderId!: string;
+  customerId!: string
+  transactionAmount!: number 
   ngOnInit(): void {
   }
-
+  
   pay(){
-    
-    this.productService.payment('65','87','45').subscribe(()=>{
-      console.log("jkh")
+    this.productService.payment(this.customerId,this.transactionAmount,this.orderId).subscribe(()=>{
 
-    }
-    )
-
+    })
+   
   }
-
 }
+  
+
+

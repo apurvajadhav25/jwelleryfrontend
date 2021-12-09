@@ -6,9 +6,9 @@ import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
 import { FilterComponent } from '../../filter/filter.component';
 import { ShoppingCartComponent } from '../../shopping-cart.component';
-import { DialogService } from 'primeng/dynamicdialog'
-import { ProductDetailComponent } from 'src/app/product-detail/product-detail.component';
+import { DialogService } from 'primeng/dynamicdialog';
 import { GalleriaComponent } from 'src/app/galleria/galleria.component';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-product-item',
@@ -19,13 +19,14 @@ export class ProductItemComponent implements OnInit {
 
   @Input()
   productItem!: Product;
+  addedToWishlist: boolean= false
   products:Product[]=[]; 
-  images: any[]=[];
+  filter: any[]=[];
   constructor(
     private msg: MessengerService,
     private productService: ProductService,
     private dialogService: DialogService,
-  
+    private sharedService: SharedService
     ) {
      }
 
@@ -46,42 +47,31 @@ export class ProductItemComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.productService.getImages().then(images => this.images = images);
+    
+    //this.productService.getImages().then(images => this.images = images);
+   // this.productService.getImages()
    
-this.productService.getProducts();
- this.productService.getProducts().subscribe((products)=>{
-  this.products=products;
-}
+//this.productService.getFilter1();
 
-)
 
 }
   handleAddToCart(){
    this.msg.sendMsg(this.productItem)
  }
 
- show() {
-   let id=this.productItem.id
-   console.log(id)
-  const ref = this.dialogService.open(ProductDetailComponent, {
-      data: {
-          id:id,
-          name:this.productItem.name,
-          description:this.productItem.description,
-          price:this.productItem.price
-      },
-      header: 'Product Details',
-      width: '50%',
-      height: '50%',
-      
-  });
+ addtocart(item: any){
+  this.msg.sendMsg(this.productItem)
+  this.sharedService.addtoCart(item);
 }
 
-change(){
-  const ref1= this.dialogService.open(GalleriaComponent,{
-    width: '50%'
 
-});
-  
+handleAddToWishlist() {
+  this.addedToWishlist = true;
 }
+
+handleRemoveFromWishlist() {
+  this.addedToWishlist = false;
+}
+
+
  }

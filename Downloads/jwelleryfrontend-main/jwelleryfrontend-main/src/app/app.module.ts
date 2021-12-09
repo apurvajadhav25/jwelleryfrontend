@@ -36,10 +36,14 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {GalleriaModule} from 'primeng/galleria';
 import { GalleriaComponent } from './galleria/galleria.component';
 import { DialogService } from 'primeng/dynamicdialog';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ContactUsComponent } from './contact-us/contact-us.component'
+import { AccordionModule } from 'primeng/accordion';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { CartFinalComponent } from './shopping-cart/cart/cart-final/cart-final.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,11 +66,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
     LoginComponent,
     RegisterComponent,
     GalleriaComponent,
-    ProductDetailComponent,
     PaymentComponent,
     ImageUploadComponent,
     ContactUsComponent,
-
+    ProductViewComponent,
+    CartFinalComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
     BrowserAnimationsModule,
     DynamicDialogModule,
     GalleriaModule,
+    AccordionModule,
+    RadioButtonModule,
 
   ],
   providers: [DialogService],

@@ -26,7 +26,7 @@ export class GalleriaComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getImages().then(images => this.images = images);
+    //this.productService.getImages().then(images => this.images = images);
   }
 
 }

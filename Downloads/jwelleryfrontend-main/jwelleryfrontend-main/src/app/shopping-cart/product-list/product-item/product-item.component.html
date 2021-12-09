@@ -1,34 +1,29 @@
 
-<div class="card mb-4 shadow-sm">
-  <img class="bd-placeholder-img card-img-top p-2" width="100%" alt="fy" [src]="productItem.imageUrl" style="cursor:pointer;" (click)="change()" /> 
- <!-- <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="2" >
-    <ng-template pTemplate="item" let-item>
-        <img class="bd-placeholder-img card-img-top p-2" [src] ="item.previewImageSrc" style="width: 100%; display: block;"/>
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-        <div class="p-grid p-nogutter p-justify-center">
-            <img [src]="item.thumbnailImageSrc" style="width: 100%;display: block;"/>
+<div class="container">
+      <div class="col">
+        <div class="card mb-4 shadow-sm">
+           <img class="bd-placeholder-img card-img-top p-2" width="100%" alt="fy" [src]="productItem.imageUrl" [routerLink]="['/product',productItem.id]" style="cursor: pointer;" /> 
+        <div class="card-body">
+          <p class="card-text1">{{ productItem.name }} </p>
+          <p class="card-text">
+            <strong>{{ productItem.price | currency:'INR' }}</strong>
+            <i *ngIf="!addedToWishlist" class='far fa-heart' (click)="handleAddToWishlist()" ></i>
+            <i *ngIf="addedToWishlist" class="fas fa-heart" (click)="handleRemoveFromWishlist()" ></i>
+          </p>
         </div>
-    </ng-template>
-  </p-galleria>-->
-    <div class="card-body">
-      <p class="card-text">
-        <strong>{{ productItem.price | currency:'INR' }}</strong>
-   
-        <i class='fas fa-heart ' ></i>
-      </p>
-      <p class="card-text">{{ productItem.name }}</p>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Add to
-            Cart</button>
+        </div>       
+       </div>
+</div>
         
-          <button type="button" (click)="show()" [(ngModel)]=" productItem.id ">View Details  </button> 
-         
+      <!-- <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-primary product-btn" (click)="addtocart(productItem)" style="float: right;">Add to
+            Cart</button>    
  </div>
-      </div>
-    </div>
-    </div>       
+      </div> -->
+        
+
+   
       
 
       
