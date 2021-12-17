@@ -24,7 +24,7 @@ export class SharedService {
         break;
       }
     }
-    if(!productExists){
+   if(!productExists){
     this.cartItemList.push( {
       productId: product.id,
       productName: product.name,
@@ -37,7 +37,35 @@ export class SharedService {
       id: product.id
     });
     this.productList.next(this.cartItemList);
+ }
   }
+
+  decrement(product : any){
+    let productExists = false
+    for (let i in this.cartItemList) {
+      if (this.cartItemList[i].productId === product.id) {
+        if(this.cartItemList[i].qty==1){
+          this.cartItemList[i].qty=1;
+          break;
+        }
+        this.cartItemList[i].qty--
+        
+       productExists = true
+        break;
+      }
+    }
+    
+  }
+
+  increment(product : any){
+    let productExists = false
+    for (let i in this.cartItemList) {
+      if (this.cartItemList[i].productId === product.id) {
+        this.cartItemList[i].qty++
+       productExists = true
+        break;
+      }
+    }
   }
 
   removeCartItem(product: any){

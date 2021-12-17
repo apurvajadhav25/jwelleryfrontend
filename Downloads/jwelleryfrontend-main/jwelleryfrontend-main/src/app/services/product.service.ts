@@ -62,12 +62,11 @@ export class ProductService {
    }
 
    getSortedProductsByDesc(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:8080//sortProductsDesc')
+    return this.http.get<Product[]>('http://localhost:8080/sortProductsDesc')
    }
 
    getImages(id: any): Observable<Image[]> {
-
-    return this.http.get<Image[]>("http://localhost:8080/images",{
+     return this.http.get<Image[]>("http://localhost:8080/images",{
       params:{
         id: id
       }

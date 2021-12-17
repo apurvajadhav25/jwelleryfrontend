@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
@@ -18,15 +18,20 @@ export class ProductListComponent implements OnInit {
   productList: Product[] = [];
   sort: string='';
   images: any[]=[]
+  f1: any;
   constructor(private productService: ProductService,
               private msg: MessengerService) {
-                this.clickEventSubscription= this.msg.getMsgEvent().subscribe((s)=>{
-                this.sort=s
+                this.clickEventSubscription= this.msg.getMsgSort().subscribe((s: any)=>{
+                  this.sort=s
+                  
                 })
+                
 
                 this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
-                  this.getProducts(filter1,filter2,price,this.sort);
+                  this.f1=filter1
+                 this.getProducts(filter1,filter2,price,this.sort);
                 })
+               
                }
  
   ngOnInit(): void {
@@ -43,12 +48,13 @@ export class ProductListComponent implements OnInit {
 
   getSortedProductsAsc($event: any){
     this.msg.sendMsgSort("low")
-   
+   console.log(this.sortedValues)
     if(this.sortedValues.length>0){
     this.productService.getSortedProducts().subscribe((products)=>{
       this.productList=products
+      console.log(products)
        })
-  }else{
+   }else{
     this.getProducts('','','','')
   } 
 }

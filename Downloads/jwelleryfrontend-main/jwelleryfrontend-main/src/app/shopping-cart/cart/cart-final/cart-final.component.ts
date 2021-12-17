@@ -23,6 +23,7 @@ export class CartFinalComponent implements OnInit {
   this.sharedService.getProducts()
     .subscribe(res=>{
       this.cartItems = res;
+      console.log(this.cartItems)
       })
 
     this.cartTotal = 0
@@ -41,6 +42,14 @@ export class CartFinalComponent implements OnInit {
   
   emptycart(){
      this.sharedService.removeAllCart();
+  }
+
+  increment(item: any){
+    this.sharedService.addtoCart(item)
+  }
+
+  decrement(item: any){
+    this.sharedService.decrement(item)
   }
 
 }
